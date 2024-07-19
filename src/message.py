@@ -53,19 +53,23 @@ MSG = """
     </div>
 
     <div class="container">
-        <p><del>Toda terça</del> Quinta, 8h30 da manhã</p>
-        <h1>🐍 Encontro 5 - Revisão! (18/7/24)</h1>
+        <p>Toda terça, 8h30 da manhã</p>
+        <h1>🐍 Encontro 6 - (23/7/24)</h1>
         <div class="msg">
-            <p>Olá! Tudo bem com vocês nesse feriado?</p>
-            <p>Passando para avisar que por causa dele nosso encontro foi para a próxima quinta, 8h30!</p>
-            <p>Temos novas pessoas chegando e decidimos fazer uma revisão com um apanhado de tudo que vimos até aqui.</p>
-            <p>Esse e-mail também chegará a todos que estavam no Compartilha Seplag com a intenção de dar oportunidade àqueles que ainda não conheciam nossos encontros.</p>
-            <p>Para os que já vinham acompanhando por todas essas semanas, sintam-se tranquilos em pular essa. Mas se quiserem revisar alguns conceitos, ótimo!</p>
+            <p>Olá!</p>
+            <p>Depois dessa grande revisão de quinta passada, voltaremos a programação normal já na próxima terça.</p>
             <p>Levem notebooks!</p>
-            
-            <img src="https://c.tenor.com/-JIgHIMq1u8AAAAC/tenor.gif" alt="xkcd" width="600" height="300">
-
-            
+            <p>Portanto, é essencial que estudem o último notebook e vejam pelo menos as 1as horas desse curso:</p>
+            <a href="https://www.youtube.com/watch?v=yTQDbqmv8Ho&t=1158s" target="_blank" title="Ver no youtube">
+                <img src="http://i3.ytimg.com/vi/yTQDbqmv8Ho/hqdefault.jpg" alt="Clique para ver o vídeo" width="600" height="400">
+              </a>            
+            <p>Outros tutoriais, se você estuda melhor lendo do que vendo vídeos:</p>
+            <ul>
+                <li><a href="https://didatica.tech/tudo-sobre-variaveis-em-python-aprenda-com-exemplos-praticos">Variáveis</a></li>
+                <li><a href="https://didatica.tech/tudo-sobre-listas-em-python/">Listas</a></li>
+                <li><a href="https://www.datacamp.com/pt/tutorial/for-loops-in-python">Loops</a></li>
+            </ul>
+            <p>Até lá!</p>
         </div>
         <div class="footer">
             © 2024 - IG/Seplag.py
