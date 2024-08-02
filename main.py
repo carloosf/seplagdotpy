@@ -1,4 +1,3 @@
-# main.py
 from database import Database
 from data_handler import DataHandler
 from datetime import datetime
@@ -20,7 +19,7 @@ def main():
         schedule_records = db.fetch_records_by_date('Agendamento', today)
         user_records = db.fetch_records_user('User')
 
-        data_handler = DataHandler(schedule_records, user_records)
+        data_handler = DataHandler(schedule_records, user_records, db)
         data_handler.send_emails()
     
     finally:
