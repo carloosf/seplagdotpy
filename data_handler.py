@@ -24,6 +24,8 @@ class DataHandler:
 
         for record in self.schedule_data:
             html_content = record[3]
+            html_content = html_content.replace("logo.png", "cid:banner.png");
+
 
             for user in self.user_data:
                 user_email = user[1]
