@@ -4,11 +4,7 @@ from datetime import datetime
 
 def main():
     db_config = {
-        'host': 'localhost',
-        'database': 'postgres',
-        'user': 'postgres',
-        'password': '1234',
-        'port': 5432
+        'database': '../seplag.py/server/prisma/dev.db'
     }
 
     db = Database(**db_config)

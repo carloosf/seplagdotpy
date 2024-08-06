@@ -25,7 +25,7 @@ class DataHandler:
 
         for record in self.schedule_data:
             record_id = record[0]
-            html_content = record[3]
+            html_content = record[1]
             html_content = html_content.replace("logo.png", "cid:banner.png")
 
             for user in self.user_data:

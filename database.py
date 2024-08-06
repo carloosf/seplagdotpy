@@ -1,25 +1,19 @@
-# database.py
-import psycopg2
-from psycopg2 import sql
+import sqlite3
 from typing import List, Tuple
-from datetime import datetime
+from sqlite3 import Connection, Cursor
 
 
 class Database:
-    def __init__(self, host: str, database: str, user: str, password: str, port: int):
+    def __init__(self, database: str):
         self.db_config = {
-            'host': host,
-            'database': database,
-            'user': user,
-            'password': password,
-            'port': port
+            'database': database
         }
-        self.conn = None
-        self.cursor = None
+        self.conn: Connection = None
+        self.cursor: Cursor = None
 
     def connect(self):
         try:
-            self.conn = psycopg2.connect(**self.db_config)
+            self.conn = sqlite3.connect(self.db_config['database'])
             self.cursor = self.conn.cursor()
         except Exception as e:
             print(f"Erro ao conectar ao banco de dados: {e}")
@@ -33,13 +27,14 @@ class Database:
     def fetch_records_by_date(self, table_name: str, date: str) -> List[Tuple]:
         if not self.conn:
             raise ConnectionError("Não há conexão com o banco de dados.")
-        try:
-            query = sql.SQL("""
-                SELECT * FROM {} WHERE "date" = %s AND "send" = False
-            """).format(sql.Identifier(table_name))
 
+        try:
+            query = f"""
+                SELECT * FROM {table_name} WHERE date = ? AND send = 0
+            """
             self.cursor.execute(query, (date,))
-            return self.cursor.fetchall()
+            results = self.cursor.fetchall()
+            return results
         except Exception as e:
             print(f"Erro ao buscar registros: {e}")
             return []
@@ -48,10 +43,9 @@ class Database:
         if not self.conn:
             raise ConnectionError("Não há conexão com o banco de dados.")
         try:
-            query = sql.SQL("""
-                SELECT * FROM {}
-            """).format(sql.Identifier(table_name))
-
+            query = f"""
+                SELECT * FROM {table_name}
+            """
             self.cursor.execute(query)
             return self.cursor.fetchall()
         except Exception as e:
@@ -62,11 +56,10 @@ class Database:
         if not self.conn:
             raise ConnectionError("Não há conexão com o banco de dados.")
         try:
-            query = sql.SQL("""
-                UPDATE {} SET "send" = %s WHERE "id" = %s
-            """).format(sql.Identifier(table_name))
-
-            self.cursor.execute(query, (status, record_id))
+            query = f"""
+                UPDATE {table_name} SET "send" = ? WHERE "id" = ?
+            """
+            self.cursor.execute(query, (1 if status else 0, record_id))
             self.conn.commit()
         except Exception as e:
             print(f"Erro ao atualizar status de envio: {e}")
